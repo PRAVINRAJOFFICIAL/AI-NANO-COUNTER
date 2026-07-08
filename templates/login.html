@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nano Counter | Google Login</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Nano Counter</span>
+
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="glass login-card">
+
+<div class="login-icon">
+
+<i class="fa-solid fa-brain"></i>
+
+</div>
+
+<h1>
+
+Welcome to AI Nano Counter
+
+</h1>
+
+<p class="subtitle">
+
+Securely sign in using your Google Account
+
+</p>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+
+<div class="flash-success">
+
+{{ message }}
+
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<button
+
+type="button"
+
+onclick="googleLogin()"
+
+class="google-btn">
+
+<i class="fa-brands fa-google"></i>
+
+Continue with Google
+
+</button>
+
+<div class="login-features">
+
+<div>
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<span>Secure Authentication</span>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-bolt"></i>
+
+<span>Fast AI Processing</span>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-camera"></i>
+
+<span>YOLO11L Detection</span>
+
+</div>
+
+</div>
+
+<a
+
+href="/"
+
+class="btn2 home-btn">
+
+<i class="fa-solid fa-house"></i>
+
+Back to Home
+
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-content">
+
+<h3>
+
+🤖 AI Nano Counter
+
+</h3>
+
+<p>
+
+AI Powered Object Detection & Counting System
+
+</p>
+
+<div class="footer-icons">
+
+<i class="fa-solid fa-camera"></i>
+
+<i class="fa-solid fa-brain"></i>
+
+<i class="fa-solid fa-chart-line"></i>
+
+<i class="fa-solid fa-robot"></i>
+
+</div>
+
+<p>
+
+© 2026 AI Nano Counter
+
+<br>
+
+Final Year BCA Project
+
+</p>
+
+</div>
+
+</footer>
+
+<script
+type="module"
+src="{{ url_for('static', filename='js/firebase.js') }}">
+</script>
+
+</body>
+
+</html>

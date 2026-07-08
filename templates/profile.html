@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nano Counter | Profile</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Nano Counter</span>
+
+</div>
+
+<ul>
+
+<li><a href="/dashboard">Dashboard</a></li>
+
+<li><a href="/image">Image Detection</a></li>
+
+<li><a href="/reports">Analytics</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="glass profile-card">
+
+<img
+
+src="{{ user.picture }}"
+
+class="profile-image"
+
+alt="Profile">
+
+<h1>
+
+{{ user.name }}
+
+</h1>
+
+<p>
+
+{{ user.email }}
+
+</p>
+
+<hr>
+
+<div class="profile-details">
+
+<div class="detail">
+
+<span>UID</span>
+
+<strong>#{{ user.user_id }}</strong>
+
+</div>
+
+<div class="detail">
+
+<span>Authentication</span>
+
+<strong>Google Login</strong>
+
+</div>
+
+<div class="detail">
+
+<span>AI Model</span>
+
+<strong>YOLO11L</strong>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="buttons">
+
+<a
+href="/dashboard"
+class="btn">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+<a
+href="javascript:void(0)"
+class="btn2"
+onclick="logout()">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<script
+type="module"
+src="{{ url_for('static', filename='js/firebase.js') }}">
+</script>
+
+</body>
+
+</html>

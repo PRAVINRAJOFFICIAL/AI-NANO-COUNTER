@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nano Counter</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- ========================= -->
+<!-- Navigation -->
+<!-- ========================= -->
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Nano Counter</span>
+
+</div>
+
+<ul>
+
+<li>
+<a class="active" href="/">Home</a>
+</li>
+
+<li>
+<a href="/dashboard">Dashboard</a>
+</li>
+
+<li>
+<a href="/login">Login</a>
+</li>
+
+<li>
+
+<a href="/dashboard" class="nav-btn">
+
+<i class="fa-solid fa-rocket"></i>
+
+Start Detection
+
+</a>
+
+</li>
+
+</ul>
+
+</nav>
+
+<!-- ========================= -->
+<!-- Hero Section -->
+<!-- ========================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="badge">
+
+<i class="fa-solid fa-bolt"></i>
+
+Powered by Artificial Intelligence
+
+</div>
+
+<h1>
+
+<span class="blue">AI</span>
+
+Nano Counter
+
+</h1>
+
+<p>
+
+Detect, Count and Analyze Objects using
+Advanced Artificial Intelligence powered by
+YOLO11L with real-time object detection,
+automatic counting and intelligent analytics.
+
+</p>
+
+<div class="buttons">
+
+<a href="/dashboard" class="btn">
+
+<i class="fa-solid fa-rocket"></i>
+
+Start Detection
+
+</a>
+
+<a href="/login" class="btn2">
+
+<i class="fa-solid fa-lock"></i>
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================= -->
+<!-- Feature Cards -->
+<!-- ========================= -->
+
+<section class="feature-section">
+
+<div class="feature-grid">
+
+
+<!-- Card 1 -->
+
+<div class="feature-card purple">
+
+<div class="icon">
+
+<i class="fa-solid fa-bolt"></i>
+
+</div>
+
+<h3>Real-Time Processing</h3>
+
+<p>
+
+Lightning-fast image processing with
+Artificial Intelligence in real-time.
+
+</p>
+
+</div>
+
+<!-- Card 3 -->
+
+<div class="feature-card green">
+
+<div class="icon">
+
+<i class="fa-solid fa-chart-simple"></i>
+
+</div>
+
+<h3>Smart Analytics</h3>
+
+<p>
+
+View detailed detection reports,
+history and object statistics instantly.
+
+</p>
+
+</div>
+
+<!-- Card 4 -->
+
+<div class="feature-card orange">
+
+<div class="icon">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+</div>
+
+<h3>Secure & Reliable</h3>
+
+<p>
+
+Secure Login,
+Permanent User ID,
+Analytics Database and
+Reliable Detection.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Live Statistics -->
+<!-- ========================= -->
+
+<section class="counter-section">
+
+<div class="counter-box">
+
+<div class="counter-item">
+
+<i class="fa-solid fa-camera-retro"></i>
+
+<h2>1000+</h2>
+
+<p>Objects Detected</p>
+
+</div>
+
+<div class="counter-item">
+
+<i class="fa-solid fa-image"></i>
+
+<h2>500+</h2>
+
+<p>Images Processed</p>
+
+</div>
+
+<div class="counter-item">
+
+<i class="fa-solid fa-users"></i>
+
+<h2>100+</h2>
+
+<p>Active Users</p>
+
+</div>
+
+<div class="counter-item">
+
+<i class="fa-solid fa-trophy"></i>
+
+<h2>99.9%</h2>
+
+<p>Accuracy Rate</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================= -->
+<!-- AI Workflow -->
+<!-- ========================= -->
+
+<section class="workflow">
+
+<h2 class="section-title">
+
+How AI Nano Counter Works
+
+</h2>
+
+<p class="section-subtitle">
+
+Simple, Fast and Intelligent Object Detection Process
+
+</p>
+
+<div class="workflow-grid">
+
+<!-- Step 1 -->
+
+<div class="workflow-card">
+
+<div class="workflow-number">01</div>
+
+<div class="workflow-icon">
+
+<i class="fa-solid fa-upload"></i>
+
+</div>
+
+<h3>Upload Image</h3>
+
+<p>
+
+Choose a JPG, JPEG or PNG image from your device and upload it securely.
+
+</p>
+
+</div>
+
+<!-- Step 2 -->
+
+<div class="workflow-card">
+
+<div class="workflow-number">02</div>
+
+<div class="workflow-icon">
+
+<i class="fa-solid fa-brain"></i>
+
+</div>
+
+<h3>AI Detection</h3>
+
+<p>
+
+YOLO11L scans the uploaded image and detects every visible object.
+
+</p>
+
+</div>
+
+<!-- Step 3 -->
+
+<div class="workflow-card">
+
+<div class="workflow-number">03</div>
+
+<div class="workflow-icon">
+
+<i class="fa-solid fa-list-check"></i>
+
+</div>
+
+<h3>Object Counting</h3>
+
+<p>
+
+Every detected object is automatically counted with high accuracy.
+
+</p>
+
+</div>
+
+<!-- Step 4 -->
+
+<div class="workflow-card">
+
+<div class="workflow-number">04</div>
+
+<div class="workflow-icon">
+
+<i class="fa-solid fa-chart-line"></i>
+
+</div>
+
+<h3>Analytics Report</h3>
+
+<p>
+
+Detection history, reports and statistics are stored for future analysis.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- Why Choose -->
+<!-- ========================= -->
+
+<section class="why">
+
+<h2 class="section-title">
+
+Why Choose AI Nano Counter?
+
+</h2>
+
+<p class="section-subtitle">
+
+Powerful Features Designed for Intelligent Object Detection
+
+</p>
+
+<div class="why-grid">
+
+<div class="why-card">
+
+<i class="fa-solid fa-microchip"></i>
+
+<h3>YOLO11L AI</h3>
+
+<p>
+
+Latest YOLO11L model provides accurate and intelligent object recognition.
+
+</p>
+
+</div>
+
+<div class="why-card">
+
+<i class="fa-solid fa-clock"></i>
+
+<h3>Real-Time Speed</h3>
+
+<p>
+
+Fast image processing with optimized AI inference engine.
+
+</p>
+
+</div>
+
+<div class="why-card">
+
+<i class="fa-solid fa-database"></i>
+
+<h3>Detection History</h3>
+
+<p>
+
+Automatically saves every detection into the analytics database.
+
+</p>
+
+</div>
+
+<div class="why-card">
+
+<i class="fa-solid fa-user-shield"></i>
+
+<h3>Secure Login</h3>
+
+<p>
+
+Google Firebase Authentication with permanent unique User ID.
+
+</p>
+
+</div>
+
+<div class="why-card">
+
+<i class="fa-solid fa-camera"></i>
+
+<h3>Live Camera</h3>
+
+<p>
+
+Real-time webcam detection and automatic object counting.
+
+</p>
+
+</div>
+
+<div class="why-card">
+
+<i class="fa-solid fa-chart-column"></i>
+
+<h3>Advanced Analytics</h3>
+
+<p>
+
+Professional dashboard with reports and object statistics.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================= -->
+<!-- Footer -->
+<!-- ========================= -->
+
+<footer class="footer">
+
+<div class="footer-content">
+
+<div class="footer-logo">
+
+<i class="fa-solid fa-robot"></i>
+
+<h2>AI Nano Counter</h2>
+
+</div>
+
+<p class="footer-desc">
+
+AI Powered Object Detection and Counting System using
+YOLO11L Artificial Intelligence Technology.
+
+</p>
+
+<div class="footer-divider"></div>
+
+<div class="designer-box">
+
+<span>DESIGNED BY</span>
+
+<h2>PRAVINRAJ</h2>
+
+<p>BCA Final Year Project</p>
+
+</div>
+
+<div class="footer-divider"></div>
+
+<p class="copyright">
+
+© 2026 AI Nano Counter | All Rights Reserved
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

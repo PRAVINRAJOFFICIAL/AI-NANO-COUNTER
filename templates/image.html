@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nano Counter | Image Detection</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Nano Counter</span>
+
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/dashboard">Dashboard</a></li>
+
+<li><a href="/reports">Analytics</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="glass result-container">
+
+<div style="text-align:center;">
+
+<i class="fa-solid fa-image fa-4x"
+style="color:#3b82f6;"></i>
+
+<h1 class="ai-gradient">
+
+AI Image Detection
+
+</h1>
+
+<p>
+
+Upload an image and let AI detect and count every object automatically.
+
+</p>
+
+</div>
+
+<form
+action="/detect"
+method="POST"
+enctype="multipart/form-data"
+id="uploadForm">
+
+<div class="upload-box">
+
+<i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+
+<h2>Drag & Drop Image</h2>
+
+<p>
+
+Supported Formats
+
+<br>
+
+JPG • JPEG • PNG
+
+</p>
+
+<input
+
+type="file"
+
+id="image"
+
+name="image"
+
+accept=".jpg,.jpeg,.png"
+
+required
+
+onchange="previewImage(event)">
+
+<label
+for="image"
+class="upload-btn">
+
+Choose Image
+
+</label>
+
+<div class="preview">
+
+<img id="preview">
+
+</div>
+
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<i class="fa-solid fa-brain"></i>
+
+<h3>YOLO11L</h3>
+
+<p>AI Model</p>
+
+</div>
+
+<div class="info-card">
+
+<i class="fa-solid fa-crosshairs"></i>
+
+<h3>99.8%</h3>
+
+<p>Accuracy</p>
+
+</div>
+
+<div class="info-card">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h3>Ready</h3>
+
+<p>AI Status</p>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button
+type="submit"
+class="btn detect-btn">
+
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+
+Detect Objects
+
+</button>
+
+<a
+href="/dashboard"
+class="btn2">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Dashboard
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+<script>
+
+function previewImage(event){
+
+const file=event.target.files[0];
+
+if(!file) return;
+
+const img=document.getElementById("preview");
+
+img.src=URL.createObjectURL(file);
+
+img.style.display="block";
+
+}
+
+document.getElementById("uploadForm").addEventListener("submit",function(){
+
+document.querySelector(".detect-btn").innerHTML=
+
+'<i class="fa-solid fa-spinner fa-spin"></i> Detecting...';
+
+});
+
+</script>
+
+</body>
+
+</html>

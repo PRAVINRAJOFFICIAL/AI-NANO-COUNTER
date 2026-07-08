@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nano Counter Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>
+            🤖 AI Nano Counter
+        </h2>
+
+        <ul>
+
+            <li><a href="/">🏠 Home</a></li>
+
+            <li><a href="/image">📷 Image Detection</a></li>
+
+            <li><a href="/camera">📹 Live Camera</a></li>
+
+            <li><a href="/reports">📊 Analytics</a></li>
+
+            <li>
+
+<a href="/profile">
+
+⚙ Profile
+
+</a>
+
+</li>
+
+            <li>
+    <a href="javascript:void(0)" onclick="logout()">
+        🚪 Logout
+    </a>
+</li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="content">
+
+        <h1>Welcome to AI Nano Counter</h1>
+
+        <p>
+
+            AI Powered Object Detection and Counting System using YOLO11L.
+
+        </p>
+
+        <!-- Quick Stats -->
+
+        <div class="stats">
+
+            <div class="card">
+
+                <h2>YOLO11L</h2>
+
+                <p>AI Model</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>99.8%</h2>
+
+                <p>Detection Accuracy</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Real-Time</h2>
+
+                <p>AI Detection</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Fast</h2>
+
+                <p>Object Counting</p>
+
+            </div>
+
+        </div>
+
+        <!-- Dashboard Cards -->
+
+        <div class="dashboard-cards">
+
+            <!-- Image Detection -->
+
+            <a href="/image" class="card-link">
+
+                <div class="dash-card">
+
+                    <i class="fa-solid fa-image fa-3x"></i>
+
+                    <h3>Image Detection</h3>
+
+                    <p>
+
+                        Upload an image and automatically detect and count objects.
+
+                    </p>
+
+                </div>
+
+            </a>
+
+            <!-- Live Camera -->
+
+            <a href="/camera" class="card-link">
+
+                <div class="dash-card">
+
+                    <i class="fa-solid fa-camera fa-3x"></i>
+
+                    <h3>Live Camera</h3>
+
+                    <p>
+
+                        Detect objects using webcam in real time.
+
+                    </p>
+
+                </div>
+
+            </a>
+
+            <!-- Analytics -->
+
+            <a href="/reports" class="card-link">
+
+                <div class="dash-card">
+
+                    <i class="fa-solid fa-chart-line fa-3x"></i>
+
+                    <h3>Analytics</h3>
+
+                    <p>
+
+                        View object counting reports and statistics.
+
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+        <!-- Project Information -->
+
+        <div class="glass" style="margin-top:40px;padding:30px;">
+
+            <h2>Project Information</h2>
+
+            <br>
+
+            <p>
+
+                ✔ AI Model : YOLO11L
+
+            </p>
+
+            <p>
+
+                ✔ Framework : Python Flask
+
+            </p>
+
+            <p>
+
+                ✔ Frontend : HTML, CSS, JavaScript
+
+            </p>
+
+            <p>
+
+                ✔ Detection : Image Object Detection
+
+            </p>
+
+            <p>
+
+                ✔ Future Scope : Live Camera & Analytics
+
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script
+type="module"
+src="{{ url_for('static', filename='js/firebase.js') }}">
+</script>
+
+</body>
+</html>
+
+</body>
+
+</html>

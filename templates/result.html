@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nano Counter | Detection Result</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Nano Counter</span>
+
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/dashboard">Dashboard</a></li>
+
+<li><a href="/image">Image Detection</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="glass result-container">
+
+<div style="text-align:center;">
+
+<i class="fa-solid fa-circle-check fa-4x" style="color:#22c55e;"></i>
+
+<h1 class="ai-gradient">
+
+Detection Result
+
+</h1>
+
+<p>
+
+Objects detected successfully using the YOLO11L AI Model.
+
+</p>
+
+</div>
+
+<div class="result-image">
+
+<img
+src="{{ url_for('static', filename=image) }}"
+alt="Detection Result">
+
+</div>
+
+<div class="result-grid">
+
+<!-- Detected Objects -->
+
+<div class="result-card">
+
+<h2>
+
+<i class="fa-solid fa-list"></i>
+
+Detected Objects
+
+</h2>
+
+<ul>
+
+{% for obj in detected %}
+
+<li>{{ obj }}</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+<!-- Count Summary -->
+
+<div class="result-card">
+
+<h2>
+
+<i class="fa-solid fa-chart-column"></i>
+
+Object Count Summary
+
+</h2>
+
+<table class="result-table">
+
+<thead>
+
+<tr>
+
+<th>Object</th>
+
+<th>Count</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for key, value in counts.items() %}
+
+<tr>
+
+<td>{{ key }}</td>
+
+<td>{{ value }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<hr style="margin:20px 0;">
+
+<h3 style="text-align:center;">
+
+Total Objects : {{ total }}
+
+</h3>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<a href="/image" class="btn">
+
+<i class="fa-solid fa-upload"></i>
+
+Detect Another
+
+</a>
+
+<a href="/dashboard" class="btn2">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 AI Nano Counter | Final Year Project
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

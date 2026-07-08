@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nano Counter | Analytics</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Nano Counter</span>
+
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/dashboard">Dashboard</a></li>
+
+<li><a href="/image">Image Detection</a></li>
+
+<li><a href="/profile">Profile</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="container">
+
+<h1 class="ai-gradient">
+
+<i class="fa-solid fa-chart-column"></i>
+
+Analytics Dashboard
+
+</h1>
+
+<p>
+
+Live Object Detection Statistics
+
+</p>
+
+<br><br>
+<br><br>
+
+<!-- =========================
+Statistics Cards
+========================= -->
+
+<div class="stats">
+
+    <div class="card">
+
+        <i class="fa-solid fa-image fa-2x"></i>
+
+        <h2>{{ total_images }}</h2>
+
+        <p>Total Images</p>
+
+    </div>
+
+    <div class="card">
+
+        <i class="fa-solid fa-cubes fa-2x"></i>
+
+        <h2>{{ total_objects }}</h2>
+
+        <p>Total Objects</p>
+
+    </div>
+
+    <div class="card">
+
+        <i class="fa-solid fa-trophy fa-2x"></i>
+
+        <h2>{{ most_object }}</h2>
+
+        <p>Most Detected</p>
+
+    </div>
+
+    <div class="card">
+
+        <i class="fa-solid fa-id-card fa-2x"></i>
+
+        <h2>ANC-{{ user.user_id }}</h2>
+
+        <p>User ID</p>
+
+    </div>
+
+</div>
+
+<br><br>
+
+<!-- =========================
+Charts
+========================= -->
+
+<div class="charts">
+
+    <div class="chart-card">
+
+        <h2>
+
+            <i class="fa-solid fa-chart-pie"></i>
+
+          
+<br><br>
+
+<!-- ==========================================
+Recent Detection History
+========================================== -->
+
+<div class="glass">
+
+<h2>
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+Recent Detection History
+
+</h2>
+
+<br>
+
+<table class="analytics-table">
+
+<thead>
+
+<tr>
+
+<th>
+
+<i class="fa-solid fa-image"></i>
+
+Image
+
+</th>
+
+<th>
+
+<i class="fa-solid fa-cube"></i>
+
+Object
+
+</th>
+
+<th>
+
+<i class="fa-solid fa-hashtag"></i>
+
+Count
+
+</th>
+
+<th>
+
+<i class="fa-solid fa-calendar-days"></i>
+
+Detected Time
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% if history %}
+
+{% for row in history %}
+
+<tr>
+
+<td>
+
+{{ row[0] }}
+
+</td>
+
+<td>
+
+<span class="badge">
+
+{{ row[1] }}
+
+</span>
+
+</td>
+
+<td>
+
+<strong>
+
+{{ row[2] }}
+
+</strong>
+
+</td>
+
+<td>
+
+{{ row[3] }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+{% else %}
+
+<tr>
+
+<td colspan="4">
+
+No Detection History Available
+
+</td>
+
+</tr>
+
+{% endif %}
+
+</tbody>
+
+</table>
+
+</div>
+
+<br><br>
+
+<!-- ==========================================
+Quick Actions
+========================================== -->
+
+<div class="buttons">
+
+<a href="/image" class="btn">
+
+<i class="fa-solid fa-upload"></i>
+
+Detect New Image
+
+</a>
+
+<a href="/camera" class="btn">
+
+<i class="fa-solid fa-camera"></i>
+
+Live Camera
+
+</a>
+
+<a href="/dashboard" class="btn2">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+</body>
+
+</html>

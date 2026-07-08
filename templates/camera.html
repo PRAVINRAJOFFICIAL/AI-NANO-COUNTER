@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Nano Counter - Live Camera</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+.camera-container{
+
+display:flex;
+gap:25px;
+align-items:flex-start;
+justify-content:center;
+flex-wrap:wrap;
+
+}
+
+.camera-left{
+
+flex:3;
+min-width:600px;
+
+}
+
+.camera-right{
+
+flex:1;
+min-width:260px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+padding:25px;
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.camera-right h2{
+
+margin-bottom:20px;
+
+color:#60a5fa;
+
+}
+
+#camera{
+
+width:100%;
+
+border-radius:18px;
+
+border:3px solid #2563eb;
+
+display:none;
+
+}
+
+.button-group{
+
+margin-top:25px;
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.count-item{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.1);
+
+font-size:18px;
+
+}
+
+.total{
+
+margin-top:20px;
+
+font-size:24px;
+
+font-weight:bold;
+
+color:#22c55e;
+
+}
+
+.status{
+
+margin-top:15px;
+
+color:#22c55e;
+
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-robot"></i>
+
+<span>AI Nano Counter</span>
+
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/dashboard">Dashboard</a></li>
+
+<li><a href="/image">Image Detection</a></li>
+
+<li><a href="/reports">Analytics</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="glass">
+
+<div class="glass camera-page">
+
+<div class="camera-header">
+
+<div>
+
+<h1>
+<i class="fa-solid fa-camera"></i>
+Live Camera Detection
+</h1>
+
+<p>YOLO11L AI Real-Time Object Detection</p>
+
+</div>
+
+<div class="camera-status">
+
+<span class="status-dot"></span>
+
+AI ACTIVE
+
+</div>
+
+</div>
+
+<div class="camera-container">
+
+<div class="camera-left">
+
+<div class="camera-frame">
+
+<img id="camera" src="">
+
+<div id="placeholder">
+
+<i class="fa-solid fa-video camera-icon"></i>
+
+<h2>Camera Offline</h2>
+
+<p>Click Start Camera</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="camera-right">
+
+<div class="info-card">
+
+<h2>📊 Live Statistics</h2>
+
+<div id="liveCounts">
+
+Waiting...
+
+</div>
+
+<div class="total" id="totalObjects">
+
+Total : 0
+
+</div>
+
+</div>
+
+<div class="info-card">
+
+<h2>🤖 AI Information</h2>
+
+<p>Model : <b>YOLO11L</b></p>
+
+<p>Status : <span style="color:#22c55e;">Running</span></p>
+
+<p>FPS : 30</p>
+
+<p>Camera : Connected</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="button-group">
+
+<button
+id="startBtn"
+class="btn"
+onclick="startCamera()">
+
+<i class="fa-solid fa-play"></i>
+
+Start Detection
+
+</button>
+
+<button
+id="stopBtn"
+class="btn2"
+style="display:none;"
+onclick="stopCamera()">
+
+<i class="fa-solid fa-stop"></i>
+
+Stop Detection
+
+</button>
+
+<a
+href="/dashboard"
+class="btn">
+
+Dashboard
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+let timer=null;
+
+function startCamera(){
+
+document.getElementById("camera").src="/video_feed";
+
+document.getElementById("camera").style.display="block";
+document.querySelector(".camera-frame").style.background="#000";
+
+document.getElementById("placeholder").style.display="none";
+
+document.getElementById("startBtn").style.display="none";
+
+document.getElementById("stopBtn").style.display="inline-block";
+
+timer=setInterval(updateCounts,500);
+
+}
+
+function stopCamera(){
+
+fetch("/stop_camera")
+
+.then(()=>{
+
+clearInterval(timer);
+
+document.getElementById("camera").src="";
+
+document.getElementById("camera").style.display="none";
+document.querySelector(".camera-frame").style.background="#0f172a";
+
+document.getElementById("placeholder").style.display="block";
+
+document.getElementById("startBtn").style.display="inline-block";
+
+document.getElementById("stopBtn").style.display="none";
+
+document.getElementById("liveCounts").innerHTML="Waiting...";
+
+document.getElementById("totalObjects").innerHTML="Total : 0";
+
+});
+
+}
+
+function updateCounts(){
+
+fetch("/counts")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+let html="";
+
+let total=0;
+
+for(const key in data){
+
+total+=data[key];
+
+html+=`
+<div class="count-item">
+<span>${key}</span>
+<span>${data[key]}</span>
+</div>
+`;
+
+}
+
+if(html===""){
+
+html="No Objects Detected";
+
+}
+
+document.getElementById("liveCounts").innerHTML=html;
+
+document.getElementById("totalObjects").innerHTML="Total : "+total;
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
