@@ -11,19 +11,22 @@ import {
 // Firebase Config
 // ==========================================
 
+// Replace these values with your Firebase project values
+// Do NOT commit real secrets if you don't want them on GitHub.
+
 const firebaseConfig = {
 
-    apiKey: "AIzaSyCm8FFxomYy0E_K6ZhW38iZWIbnvr0xPqo",
+    apiKey: "",
 
-    authDomain: "ai-nano-counter-87b7c.firebaseapp.com",
+    authDomain: "",
 
-    projectId: "ai-nano-counter-87b7c",
+    projectId: "",
 
-    storageBucket: "ai-nano-counter-87b7c.firebasestorage.app",
+    storageBucket: "",
 
-    messagingSenderId: "552178964022",
+    messagingSenderId: "",
 
-    appId: "1:552178964022:web:220b8c24e619fd7eebaa97"
+    appId: ""
 
 };
 
@@ -38,9 +41,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 provider.setCustomParameters({
-
     prompt: "select_account"
-
 });
 
 // ==========================================
@@ -60,15 +61,11 @@ window.googleLogin = async function () {
             method: "POST",
 
             headers: {
-
                 "Content-Type": "application/json"
-
             },
 
             body: JSON.stringify({
-
                 idToken: idToken
-
             })
 
         });
@@ -85,9 +82,7 @@ window.googleLogin = async function () {
 
         }
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.error(error);
 
