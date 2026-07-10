@@ -1,10 +1,14 @@
+import os
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import auth
 
-cred = credentials.Certificate(
-    "ai-nano-counter-87b7c-firebase-adminsdk-fbsvc-8e93e9f55b.json"
+cred_path = os.getenv(
+    "GOOGLE_APPLICATION_CREDENTIALS",
+    "firebase-admin.json"
 )
+
+cred = credentials.Certificate(cred_path)
 
 try:
     firebase_admin.get_app()
