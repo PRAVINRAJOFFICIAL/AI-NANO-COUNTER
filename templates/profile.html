@@ -4,12 +4,14 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>AI Nano Counter | Profile</title>
 
 <link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+href="{{ url_for('static', filename='css/profile.css') }}">
 
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
@@ -28,9 +30,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <body>
 
-<div class="bg"></div>
-
-<nav>
+<nav class="navbar">
 
 <div class="logo">
 
@@ -46,23 +46,25 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <li><a href="/image">Image Detection</a></li>
 
+<li><a href="/camera">Live Camera</a></li>
+
 <li><a href="/reports">Analytics</a></li>
 
 </ul>
 
 </nav>
 
-<section class="hero">
+<section class="profile-section">
 
-<div class="glass profile-card">
+<div class="profile-card">
+
+<div class="profile-image">
 
 <img
-
 src="{{ user.picture }}"
-
-class="profile-image"
-
 alt="Profile">
+
+</div>
 
 <h1>
 
@@ -70,43 +72,90 @@ alt="Profile">
 
 </h1>
 
-<p>
+<p class="email">
 
 {{ user.email }}
 
 </p>
 
-<hr>
+<div class="badge">
 
-<div class="profile-details">
+<i class="fa-brands fa-google"></i>
+
+Google Account Verified
+
+</div>
+
+<div class="details">
 
 <div class="detail">
 
-<span>UID</span>
+<i class="fa-solid fa-id-card"></i>
 
-<strong>#{{ user.user_id }}</strong>
+<span>
 
-</div>
+UID : {{ user.uid }}
 
-<div class="detail">
-
-<span>Authentication</span>
-
-<strong>Google Login</strong>
+</span>
 
 </div>
 
 <div class="detail">
 
-<span>AI Model</span>
+<i class="fa-solid fa-brain"></i>
 
-<strong>YOLO11L</strong>
+<span>
+
+AI Model : YOLO11L
+
+</span>
+
+</div>
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<i class="fa-solid fa-image"></i>
+
+<h3>{{ total_images }}</h3>
+
+<p>Total Images</p>
+
+</div>
+
+<div class="info-card">
+
+<i class="fa-solid fa-cubes"></i>
+
+<h3>{{ total_objects }}</h3>
+
+<p>Total Objects</p>
+
+</div>
+
+<div class="info-card">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h3>99.8%</h3>
+
+<p>AI Accuracy</p>
+
+</div>
+
+<div class="info-card">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h3>Active</h3>
+
+<p>Account Status</p>
 
 </div>
 
 </div>
-
-<br>
 
 <div class="buttons">
 
@@ -121,9 +170,28 @@ Dashboard
 </a>
 
 <a
-href="javascript:void(0)"
-class="btn2"
-onclick="logout()">
+href="/image"
+class="btn">
+
+<i class="fa-solid fa-image"></i>
+
+Image Detection
+
+</a>
+
+<a
+href="/camera"
+class="btn">
+
+<i class="fa-solid fa-camera"></i>
+
+Live Camera
+
+</a>
+
+<a
+href="/logout"
+class="btn logout">
 
 <i class="fa-solid fa-right-from-bracket"></i>
 
@@ -137,10 +205,15 @@ Logout
 
 </section>
 
-<script
-type="module"
-src="{{ url_for('static', filename='js/firebase.js') }}">
-</script>
+<footer>
+
+<p>
+
+© 2026 AI Nano Counter | Final Year BCA Project | Developed By Pravinraj R | Coordinate By Yuvan sankar raja A
+
+</p>
+
+</footer>
 
 </body>
 

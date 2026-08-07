@@ -1,0 +1,864 @@
+/* ==========================================
+   AI NANO COUNTER - LOGIN CSS
+   PART 1
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+
+    --bg:#050816;
+    --card:#0f172a;
+    --primary:#4f46e5;
+    --secondary:#7c3aed;
+    --accent:#38bdf8;
+
+    --text:#ffffff;
+    --text2:#cbd5e1;
+
+    --border:rgba(255,255,255,.08);
+
+    --shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:#050816;
+
+color:white;
+
+min-height:100vh;
+
+overflow-x:hidden;
+
+position:relative;
+
+}
+
+/* ===========================
+BACKGROUND
+=========================== */
+
+.bg{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+z-index:-1;
+
+background:
+
+radial-gradient(circle at 15% 20%,rgba(59,130,246,.25),transparent 28%),
+
+radial-gradient(circle at 90% 80%,rgba(124,58,237,.22),transparent 35%),
+
+#050816;
+
+}
+
+.bg::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+
+linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+
+background-size:55px 55px;
+
+}
+
+/* ===========================
+NAVBAR
+=========================== */
+
+.navbar{
+
+width:92%;
+
+max-width:1300px;
+
+margin:25px auto;
+
+padding:18px 30px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(15,23,42,.72);
+
+border:1px solid var(--border);
+
+border-radius:22px;
+
+backdrop-filter:blur(18px);
+
+box-shadow:var(--shadow);
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+text-decoration:none;
+
+color:white;
+
+font-size:30px;
+
+font-weight:700;
+
+}
+
+.logo i{
+
+width:62px;
+
+height:62px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:18px;
+
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+font-size:28px;
+
+box-shadow:0 15px 35px rgba(79,70,229,.45);
+
+}
+
+.home-link{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:14px 28px;
+
+border-radius:15px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:white;
+
+text-decoration:none;
+
+font-weight:600;
+
+transition:.35s;
+
+}
+
+.home-link:hover{
+
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+transform:translateY(-3px);
+
+}
+/* ==========================================
+   LOGIN PAGE
+   PART 2
+========================================== */
+
+/* ===========================
+LOGIN LAYOUT
+=========================== */
+
+.login-page{
+
+    min-height:calc(100vh - 140px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px 20px;
+
+}
+
+.login-container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ===========================
+LOGIN CARD
+=========================== */
+
+.login-card{
+
+    width:100%;
+
+    max-width:480px;
+
+    background:rgba(15,23,42,.78);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:28px;
+
+    padding:48px 40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:22px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+/* ===========================
+LOGIN ICON
+=========================== */
+
+.login-icon{
+
+    width:95px;
+
+    height:95px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:24px;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    color:#fff;
+
+    font-size:40px;
+
+    box-shadow:0 20px 45px rgba(79,70,229,.45);
+
+}
+
+/* ===========================
+TITLE
+=========================== */
+
+.login-card h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    line-height:1.2;
+
+}
+
+.subtitle{
+
+    color:#cbd5e1;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    max-width:330px;
+
+}
+
+/* ===========================
+SUCCESS MESSAGE
+=========================== */
+
+.flash-success{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:rgba(34,197,94,.15);
+
+    border:1px solid rgba(34,197,94,.35);
+
+    color:#d1fae5;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+GOOGLE BUTTON
+=========================== */
+
+.google-btn{
+
+    width:100%;
+
+    height:58px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    border:none;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    transition:.35s;
+
+    box-shadow:0 18px 40px rgba(79,70,229,.40);
+
+}
+
+.google-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 25px 50px rgba(79,70,229,.55);
+
+}
+
+.google-btn i{
+
+    font-size:20px;
+
+}
+/* ==========================================
+   LOGIN PAGE
+   PART 3
+========================================== */
+
+/* ===========================
+LOGIN FEATURES
+=========================== */
+
+.login-features{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:8px;
+
+}
+
+.login-features div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+
+}
+
+.login-features div:hover{
+
+    background:rgba(79,70,229,.18);
+
+    border-color:#4F46E5;
+
+    transform:translateX(6px);
+
+}
+
+.login-features i{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    color:#fff;
+
+    font-size:18px;
+
+    flex-shrink:0;
+
+}
+
+.login-features span{
+
+    color:#E2E8F0;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+/* ===========================
+BACK HOME BUTTON
+=========================== */
+
+.back-home{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:15px;
+
+    margin-top:10px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.back-home:hover{
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+FOOTER
+=========================== */
+
+.footer{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:30px 20px;
+
+    margin-top:40px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    color:#94A3B8;
+
+    font-size:14px;
+
+}
+
+.footer p{
+
+    margin:0;
+
+    line-height:1.8;
+
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+    .navbar{
+
+        width:95%;
+
+        padding:16px 20px;
+
+    }
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    .logo i{
+
+        width:52px;
+
+        height:52px;
+
+        font-size:22px;
+
+    }
+
+    .home-link{
+
+        padding:10px 18px;
+
+        font-size:14px;
+
+    }
+
+    .login-card{
+
+        max-width:100%;
+
+        padding:35px 24px;
+
+        border-radius:22px;
+
+    }
+
+    .login-card h1{
+
+        font-size:30px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+    }
+
+    .login-page{
+
+        padding:25px 15px;
+
+    }
+
+    .login-icon{
+
+        width:80px;
+
+        height:80px;
+
+        font-size:32px;
+
+    }
+
+    .google-btn{
+
+        font-size:15px;
+
+    }
+
+}
+/*=========================================
+LOGIN PAGE
+PART 4 - FINAL POLISH
+=========================================*/
+
+/* Card Animation */
+
+.login-card{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Floating Background */
+
+.bg::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(37,99,235,.12);
+
+    filter:blur(120px);
+
+    top:-120px;
+
+    right:-120px;
+
+    animation:floatGlow 10s infinite alternate;
+
+}
+
+@keyframes floatGlow{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(60px);
+
+    }
+
+}
+
+/* Navbar Hover */
+
+.logo{
+
+    transition:.35s;
+
+}
+
+.logo:hover{
+
+    transform:scale(1.03);
+
+}
+
+.logo:hover i{
+
+    transform:rotate(10deg);
+
+}
+
+/* Button Active */
+
+.google-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#050816;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(#2563eb,#7c3aed);
+
+    border-radius:10px;
+
+}
+
+/* Selection */
+
+::selection{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+/* Focus */
+
+button:focus,
+
+a:focus{
+
+    outline:2px solid #38bdf8;
+
+    outline-offset:3px;
+
+}
+
+/* Glass Hover */
+
+.login-card:hover{
+
+    border-color:rgba(79,70,229,.45);
+
+    box-shadow:0 30px 70px rgba(79,70,229,.25);
+
+}
+
+/* Footer Hover */
+
+.footer{
+
+    transition:.35s;
+
+}
+
+.footer:hover{
+
+    color:#fff;
+
+}
+
+/* Large Screens */
+
+@media(min-width:1400px){
+
+    .login-card{
+
+        max-width:520px;
+
+    }
+
+}
+
+/* Small Phones */
+
+@media(max-width:380px){
+
+    .login-card{
+
+        padding:28px 18px;
+
+    }
+
+    .login-card h1{
+
+        font-size:26px;
+
+    }
+
+    .subtitle{
+
+        font-size:14px;
+
+    }
+
+    .google-btn{
+
+        height:52px;
+
+        font-size:14px;
+
+    }
+
+}

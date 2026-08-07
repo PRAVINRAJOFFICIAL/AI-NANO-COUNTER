@@ -9,7 +9,7 @@
 <title>AI Nano Counter | Google Login</title>
 
 <link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+href="{{ url_for('static', filename='css/login.css') }}">
 
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <div class="bg"></div>
 
-<nav>
+<nav class="navbar">
 
 <div class="logo">
 
@@ -40,17 +40,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </div>
 
-<ul>
+<a href="/" class="home-link">
 
-<li><a href="/">Home</a></li>
+<i class="fa-solid fa-house"></i>
 
-</ul>
+Home
+
+</a>
 
 </nav>
 
-<section class="hero">
+<section class="login-page">
 
-<div class="glass login-card">
+<div class="login-container">
+
+<div class="login-card">
 
 <div class="login-icon">
 
@@ -130,8 +134,7 @@ Continue with Google
 
 href="/"
 
-class="btn2 home-btn">
-
+class="back-home">
 <i class="fa-solid fa-house"></i>
 
 Back to Home
@@ -140,47 +143,17 @@ Back to Home
 
 </div>
 
+</div>
+
 </section>
 
-<footer>
-
-<div class="footer-content">
-
-<h3>
-
-🤖 AI Nano Counter
-
-</h3>
+<footer class="footer">
 
 <p>
 
-AI Powered Object Detection & Counting System
+© 2026 AI Nano Counter | AI Powered Object Detection using YOLO11L | DEVELOPED BY PRAVINRAJ R
 
 </p>
-
-<div class="footer-icons">
-
-<i class="fa-solid fa-camera"></i>
-
-<i class="fa-solid fa-brain"></i>
-
-<i class="fa-solid fa-chart-line"></i>
-
-<i class="fa-solid fa-robot"></i>
-
-</div>
-
-<p>
-
-© 2026 AI Nano Counter
-
-<br>
-
-Final Year BCA Project
-
-</p>
-
-</div>
 
 </footer>
 

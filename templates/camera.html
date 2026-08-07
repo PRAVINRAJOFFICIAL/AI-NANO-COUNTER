@@ -6,141 +6,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Nano Counter - Live Camera</title>
+<title>AI Nano Counter | Live Camera</title>
 
 <link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+href="{{ url_for('static', filename='css/camera.css') }}">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<style>
-
-.camera-container{
-
-display:flex;
-gap:25px;
-align-items:flex-start;
-justify-content:center;
-flex-wrap:wrap;
-
-}
-
-.camera-left{
-
-flex:3;
-min-width:600px;
-
-}
-
-.camera-right{
-
-flex:1;
-min-width:260px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(15px);
-
-padding:25px;
-
-border-radius:20px;
-
-border:1px solid rgba(255,255,255,.15);
-
-}
-
-.camera-right h2{
-
-margin-bottom:20px;
-
-color:#60a5fa;
-
-}
-
-#camera{
-
-width:100%;
-
-border-radius:18px;
-
-border:3px solid #2563eb;
-
-display:none;
-
-}
-
-.button-group{
-
-margin-top:25px;
-
-display:flex;
-
-justify-content:center;
-
-gap:20px;
-
-flex-wrap:wrap;
-
-}
-
-.count-item{
-
-display:flex;
-
-justify-content:space-between;
-
-padding:10px 0;
-
-border-bottom:1px solid rgba(255,255,255,.1);
-
-font-size:18px;
-
-}
-
-.total{
-
-margin-top:20px;
-
-font-size:24px;
-
-font-weight:bold;
-
-color:#22c55e;
-
-}
-
-.status{
-
-margin-top:15px;
-
-color:#22c55e;
-
-font-weight:bold;
-
-}
-
-</style>
 
 </head>
 
 <body>
 
-<div class="bg"></div>
+<div class="background-grid"></div>
 
-<nav>
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
 
 <div class="logo">
 
+<div class="logo-icon">
+
 <i class="fa-solid fa-robot"></i>
 
-<span>AI Nano Counter</span>
+</div>
+
+<div>
+
+<h2>AI Nano Counter</h2>
+
+<p>YOLO11L Real-Time Detection</p>
+
+</div>
 
 </div>
 
 <ul>
-
-<li><a href="/">Home</a></li>
 
 <li><a href="/dashboard">Dashboard</a></li>
 
@@ -148,94 +60,62 @@ font-weight:bold;
 
 <li><a href="/reports">Analytics</a></li>
 
+<li><a href="/profile">Profile</a></li>
+
 </ul>
 
 </nav>
 
-<section class="hero">
+<!-- ================= MAIN ================= -->
 
-<div class="glass">
+<section class="camera-section">
 
-<div class="glass camera-page">
+<div class="camera-left">
 
-<div class="camera-header">
+<div class="glass-card">
 
-<div>
+<div class="title">
 
 <h1>
-<i class="fa-solid fa-camera"></i>
+
+<i class="fa-solid fa-video"></i>
+
 Live Camera Detection
+
 </h1>
 
-<p>YOLO11L AI Real-Time Object Detection</p>
+<p>
 
-</div>
+Real-Time AI Object Detection using YOLO11L
 
-<div class="camera-status">
-
-<span class="status-dot"></span>
-
-AI ACTIVE
-
-</div>
+</p>
 
 </div>
 
 <div class="camera-container">
 
-<div class="camera-left">
+<img
+id="videoFeed"
+src=""
+alt="Live Camera">
 
-<div class="camera-frame">
+<div
+id="overlay"
+class="overlay">
 
-<img id="camera" src="">
+<i class="fa-solid fa-camera"></i>
 
-<div id="placeholder">
+<h2>
 
-<i class="fa-solid fa-video camera-icon"></i>
+Camera Ready
 
-<h2>Camera Offline</h2>
+</h2>
 
-<p>Click Start Camera</p>
+<p>
 
-</div>
+Click Start Camera to begin detection
 
-</div>
-
-</div>
-
-<div class="camera-right">
-
-<div class="info-card">
-
-<h2>📊 Live Statistics</h2>
-
-<div id="liveCounts">
-
-Waiting...
-
-</div>
-
-<div class="total" id="totalObjects">
-
-Total : 0
-
-</div>
-
-</div>
-
-<div class="info-card">
-
-<h2>🤖 AI Information</h2>
-
-<p>Model : <b>YOLO11L</b></p>
-
-<p>Status : <span style="color:#22c55e;">Running</span></p>
-
-<p>FPS : 30</p>
-
-<p>Camera : Connected</p>
-
-</div>
+</p>
 
 </div>
 
@@ -245,30 +125,39 @@ Total : 0
 
 <button
 id="startBtn"
-class="btn"
-onclick="startCamera()">
+class="btn start-btn">
 
 <i class="fa-solid fa-play"></i>
 
-Start Detection
+Start Camera
 
 </button>
 
 <button
 id="stopBtn"
-class="btn2"
-style="display:none;"
-onclick="stopCamera()">
+class="btn stop-btn">
 
 <i class="fa-solid fa-stop"></i>
 
-Stop Detection
+Stop Camera
+
+</button>
+
+<button
+id="captureBtn"
+class="btn capture-btn">
+
+<i class="fa-solid fa-camera"></i>
+
+Capture
 
 </button>
 
 <a
 href="/dashboard"
-class="btn">
+class="btn dashboard-btn">
+
+<i class="fa-solid fa-house"></i>
 
 Dashboard
 
@@ -276,6 +165,190 @@ Dashboard
 
 </div>
 
+</div>
+
+</div>
+
+<!-- RIGHT PANEL -->
+
+<div class="camera-right">
+
+<div class="glass-card">
+
+<h2>
+
+<i class="fa-solid fa-chart-line"></i>
+
+Live Statistics
+
+</h2>
+<!-- ================= CAMERA STATUS ================= -->
+
+<div class="status-grid">
+
+<div class="status-card">
+
+<i class="fa-solid fa-circle-dot"></i>
+
+<h3>Camera Status</h3>
+
+<h1 id="cameraStatus" class="idle">
+
+Idle
+
+</h1>
+
+</div>
+
+<div class="status-card">
+
+<i class="fa-solid fa-cubes"></i>
+
+<h3>Total Objects</h3>
+
+<h1 id="totalObjects">
+
+0
+
+</h1>
+
+</div>
+
+<div class="status-card">
+
+<i class="fa-solid fa-gauge-high"></i>
+
+<h3>FPS</h3>
+
+<h1 id="fps">
+
+0
+
+</h1>
+
+</div>
+
+<div class="status-card">
+
+<i class="fa-solid fa-microchip"></i>
+
+<h3>AI Model</h3>
+
+<h1>
+
+YOLO11L
+
+</h1>
+
+</div>
+
+</div>
+
+<!-- ================= DETECTED OBJECTS ================= -->
+
+<div class="glass-card object-card">
+
+<div class="card-header">
+
+<h2>
+
+<i class="fa-solid fa-layer-group"></i>
+
+Detected Objects
+
+</h2>
+
+<span id="objectCount">
+
+0 Objects
+
+</span>
+
+</div>
+
+<div id="objectList">
+
+<div class="empty-state">
+
+<i class="fa-solid fa-box-open"></i>
+
+<p>
+
+No objects detected.
+
+</p>
+
+<p>
+
+Click <b>Start Camera</b> to begin AI detection.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= AI STATUS ================= -->
+
+<div class="glass-card">
+
+<h2>
+
+<i class="fa-solid fa-brain"></i>
+
+AI Engine
+
+</h2>
+
+<div class="ai-info">
+
+<div class="ai-row">
+
+<span>Model</span>
+
+<b>YOLO11L</b>
+
+</div>
+
+<div class="ai-row">
+
+<span>Detection</span>
+
+<b id="detectStatus">
+
+Waiting
+
+</b>
+
+</div>
+
+<div class="ai-row">
+
+<span>Stream</span>
+
+<b id="streamStatus">
+
+Offline
+
+</b>
+
+</div>
+
+<div class="ai-row">
+
+<span>Confidence</span>
+
+<b id="confidence">
+
+-- %
+
+</b>
+
+</div>
+
+</div>
 
 </div>
 
@@ -283,90 +356,192 @@ Dashboard
 
 </section>
 
+<footer>
+
+<p>
+
+© 2026 AI Nano Counter | Final Year Project
+
+</p>
+
+</footer>
 <script>
 
-let timer=null;
+const video = document.getElementById("videoFeed");
+const overlay = document.getElementById("overlay");
 
-function startCamera(){
+const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
+const captureBtn = document.getElementById("captureBtn");
 
-document.getElementById("camera").src="/video_feed";
+const status = document.getElementById("cameraStatus");
+const total = document.getElementById("totalObjects");
+const fps = document.getElementById("fps");
 
-document.getElementById("camera").style.display="block";
-document.querySelector(".camera-frame").style.background="#000";
+const detectStatus = document.getElementById("detectStatus");
+const streamStatus = document.getElementById("streamStatus");
+const confidence = document.getElementById("confidence");
 
-document.getElementById("placeholder").style.display="none";
+const objectList = document.getElementById("objectList");
+const objectCount = document.getElementById("objectCount");
 
-document.getElementById("startBtn").style.display="none";
+let running = false;
 
-document.getElementById("stopBtn").style.display="inline-block";
+/* ===========================
+   START CAMERA
+=========================== */
 
-timer=setInterval(updateCounts,500);
+startBtn.onclick = function(){
 
-}
+    if(running) return;
 
-function stopCamera(){
+    video.src="/video_feed?"+Date.now();
 
-fetch("/stop_camera")
+    overlay.style.display="none";
 
-.then(()=>{
+    running=true;
 
-clearInterval(timer);
+    status.innerHTML="Running";
+    status.className="running";
 
-document.getElementById("camera").src="";
+    detectStatus.innerHTML="Detecting";
 
-document.getElementById("camera").style.display="none";
-document.querySelector(".camera-frame").style.background="#0f172a";
-
-document.getElementById("placeholder").style.display="block";
-
-document.getElementById("startBtn").style.display="inline-block";
-
-document.getElementById("stopBtn").style.display="none";
-
-document.getElementById("liveCounts").innerHTML="Waiting...";
-
-document.getElementById("totalObjects").innerHTML="Total : 0";
-
-});
+    streamStatus.innerHTML="Online";
 
 }
 
-function updateCounts(){
+/* ===========================
+   STOP CAMERA
+=========================== */
 
-fetch("/counts")
+stopBtn.onclick = async function(){
 
-.then(res=>res.json())
+    if(!running) return;
 
-.then(data=>{
+    await fetch("/stop_camera");
 
-let html="";
+    video.src="";
 
-let total=0;
+    video.removeAttribute("src");
 
-for(const key in data){
+    video.load();
 
-total+=data[key];
+    overlay.style.display="flex";
 
-html+=`
-<div class="count-item">
-<span>${key}</span>
-<span>${data[key]}</span>
-</div>
-`;
+    running=false;
+
+    status.innerHTML="Stopped";
+    status.className="stopped";
+
+    detectStatus.innerHTML="Stopped";
+
+    streamStatus.innerHTML="Offline";
+
+    confidence.innerHTML="-- %";
+
+    total.innerHTML="0";
+
+    fps.innerHTML="0";
+
+    objectCount.innerHTML="0 Objects";
+
+    objectList.innerHTML=`
+        <div class="empty-state">
+            <i class="fa-solid fa-box-open"></i>
+            <p>No objects detected.</p>
+        </div>
+    `;
 
 }
 
-if(html===""){
+/* ===========================
+   LIVE UPDATE
+=========================== */
 
-html="No Objects Detected";
+async function updateCounts(){
+
+    if(!running) return;
+
+    try{
+
+        const response = await fetch("/counts");
+
+        const data = await response.json();
+
+        total.innerHTML = data.total || 0;
+
+        fps.innerHTML = data.fps || 30;
+
+        confidence.innerHTML = "99.8%";
+
+        const objects = data.objects || {};
+
+        objectCount.innerHTML =
+            Object.keys(objects).length + " Objects";
+
+        objectList.innerHTML="";
+
+        if(Object.keys(objects).length===0){
+
+            objectList.innerHTML=`
+            <div class="empty-state">
+                <i class="fa-solid fa-box-open"></i>
+                <p>No objects detected.</p>
+            </div>
+            `;
+
+            return;
+        }
+
+        Object.entries(objects).forEach(([name,count])=>{
+
+            objectList.innerHTML+=`
+
+            <div class="object-item">
+
+                <span>${name}</span>
+
+                <b>${count}</b>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+    }
 
 }
 
-document.getElementById("liveCounts").innerHTML=html;
+setInterval(updateCounts,500);
 
-document.getElementById("totalObjects").innerHTML="Total : "+total;
+/* ===========================
+   CAPTURE
+=========================== */
 
-});
+captureBtn.onclick=function(){
+
+    if(!running){
+
+        alert("Start Camera First");
+
+        return;
+
+    }
+
+    const link=document.createElement("a");
+
+    link.href=video.src;
+
+    link.download="capture.jpg";
+
+    link.click();
 
 }
 

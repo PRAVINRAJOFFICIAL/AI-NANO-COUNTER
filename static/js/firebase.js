@@ -14,20 +14,16 @@ import {
 // Replace these values with your Firebase project values
 // Do NOT commit real secrets if you don't want them on GitHub.
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-
-    apiKey: "",
-
-    authDomain: "",
-
-    projectId: "",
-
-    storageBucket: "",
-
-    messagingSenderId: "",
-
-    appId: ""
-
+  apiKey: "AIzaSyCm8FFxomYy0E_K6ZhW38iZWIbnvr0xPqo",
+  authDomain: "ai-nano-counter-87b7c.firebaseapp.com",
+  databaseURL: "https://ai-nano-counter-87b7c-default-rtdb.firebaseio.com",
+  projectId: "ai-nano-counter-87b7c",
+  storageBucket: "ai-nano-counter-87b7c.firebasestorage.app",
+  messagingSenderId: "552178964022",
+  appId: "1:552178964022:web:220b8c24e619fd7eebaa97",
+  measurementId: "G-D14DY41KWL"
 };
 
 // ==========================================

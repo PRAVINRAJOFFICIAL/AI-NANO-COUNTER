@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nano Counter Dashboard</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 
-<title>AI Nano Counter Dashboard</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+    
 </head>
 
 <body>
@@ -21,211 +18,167 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <div class="dashboard">
 
     <!-- Sidebar -->
-
     <aside class="sidebar">
 
-        <h2>
-            🤖 AI Nano Counter
-        </h2>
+        <div class="logo">
+            <i class="fa-solid fa-robot"></i>
+            <h2>AI Nano Counter</h2>
+        </div>
 
-        <ul>
+        <ul class="menu">
 
-            <li><a href="/">🏠 Home</a></li>
-
-            <li><a href="/image">📷 Image Detection</a></li>
-
-            <li><a href="/camera">📹 Live Camera</a></li>
-
-            <li><a href="/reports">📊 Analytics</a></li>
-
-            <li>
-
-<a href="/profile">
-
-⚙ Profile
-
-</a>
-
-</li>
+            <li class="active">
+                <a href="/dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
 
             <li>
-    <a href="javascript:void(0)" onclick="logout()">
-        🚪 Logout
+                <a href="/image">
+                    <i class="fa-solid fa-image"></i>
+                    Image Detection
+                </a>
+            </li>
+
+            <li>
+                <a href="/camera">
+                    <i class="fa-solid fa-camera"></i>
+                    Live Camera
+                </a>
+            </li>
+
+            
+
+            <li>
+    <a href="/reports">
+        <i class="fa-solid fa-chart-simple"></i>
+        Analytics
     </a>
 </li>
+
+            <li>
+                <a href="/profile">
+                    <i class="fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
 
         </ul>
 
     </aside>
 
-    <!-- Main -->
+    <!-- Main Content -->
+    <main class="content dashboard-content">
 
-    <main class="content">
+        <!-- Top Bar -->
+        <header class="topbar">
 
-        <h1>Welcome to AI Nano Counter</h1>
+            <div>
+                <h1>Welcome, {{ user.name }}</h1>
+                <p>AI Powered Object Detection Dashboard</p>
+            </div>
 
-        <p>
+            <div class="search">
 
-            AI Powered Object Detection and Counting System using YOLO11L.
+                <input type="text" placeholder="Search...">
 
-        </p>
-
-        <!-- Quick Stats -->
-
-        <div class="stats">
-
-            <div class="card">
-
-                <h2>YOLO11L</h2>
-
-                <p>AI Model</p>
+                <i class="fa-solid fa-magnifying-glass"></i>
 
             </div>
 
-            <div class="card">
+        </header>
 
-                <h2>99.8%</h2>
+        <!-- Statistics -->
+    
 
-                <p>Detection Accuracy</p>
+        <!-- Charts -->
+       
 
-            </div>
+        <!-- Quick Actions -->
+        <section class="quick-actions">
 
-            <div class="card">
+            <div class="action-card">
 
-                <h2>Real-Time</h2>
+                <i class="fa-solid fa-image"></i>
 
-                <p>AI Detection</p>
+                <h3>Image Detection</h3>
 
-            </div>
-
-            <div class="card">
-
-                <h2>Fast</h2>
-
-                <p>Object Counting</p>
+                <a href="/image">Open</a>
 
             </div>
 
-        </div>
+            <div class="action-card">
 
-        <!-- Dashboard Cards -->
+                <i class="fa-solid fa-camera"></i>
 
-        <div class="dashboard-cards">
+                <h3>Live Camera</h3>
 
-            <!-- Image Detection -->
+                <a href="/camera">Open</a>
 
-            <a href="/image" class="card-link">
+            </div>
 
-                <div class="dash-card">
+            
 
-                    <i class="fa-solid fa-image fa-3x"></i>
+        </section>
 
-                    <h3>Image Detection</h3>
+        <!-- Recent Detection -->
+        <section class="recent">
 
-                    <p>
+            <h2>Recent Detections</h2>
 
-                        Upload an image and automatically detect and count objects.
+            <table>
 
-                    </p>
+                <thead>
 
-                </div>
+                    <tr>
+                        <th>Image</th>
+                        <th>Objects</th>
+                        <th>Time</th>
+                    </tr>
 
-            </a>
+                </thead>
 
-            <!-- Live Camera -->
+                <tbody>
 
-            <a href="/camera" class="card-link">
+                    <tr>
 
-                <div class="dash-card">
+                        <td>traffic.jpg</td>
 
-                    <i class="fa-solid fa-camera fa-3x"></i>
+                        <td>24</td>
 
-                    <h3>Live Camera</h3>
+                        <td>2 min ago</td>
 
-                    <p>
+                    </tr>
 
-                        Detect objects using webcam in real time.
+                    <tr>
 
-                    </p>
+                        <td>bottle.jpg</td>
 
-                </div>
+                        <td>15</td>
 
-            </a>
+                        <td>15 min ago</td>
 
-            <!-- Analytics -->
+                    </tr>
 
-            <a href="/reports" class="card-link">
+                </tbody>
 
-                <div class="dash-card">
+            </table>
 
-                    <i class="fa-solid fa-chart-line fa-3x"></i>
-
-                    <h3>Analytics</h3>
-
-                    <p>
-
-                        View object counting reports and statistics.
-
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-        <!-- Project Information -->
-
-        <div class="glass" style="margin-top:40px;padding:30px;">
-
-            <h2>Project Information</h2>
-
-            <br>
-
-            <p>
-
-                ✔ AI Model : YOLO11L
-
-            </p>
-
-            <p>
-
-                ✔ Framework : Python Flask
-
-            </p>
-
-            <p>
-
-                ✔ Frontend : HTML, CSS, JavaScript
-
-            </p>
-
-            <p>
-
-                ✔ Detection : Image Object Detection
-
-            </p>
-
-            <p>
-
-                ✔ Future Scope : Live Camera & Analytics
-
-            </p>
-
-        </div>
+        </section>
 
     </main>
 
 </div>
 
-<script
-type="module"
-src="{{ url_for('static', filename='js/firebase.js') }}">
-</script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 
 </body>
-</html>
-
-</body>
-
 </html>

@@ -380,52 +380,71 @@ def detect():
 
     )
 # ==========================================
-# Live Camera Feed
+# LIVE CAMERA API
 # ==========================================
+
+camera_running = False
+camera_fps = 0
+
+
 @app.route("/video_feed")
 @login_required
 def video_feed():
 
+    global camera_running
+
+    camera_running = True
+
     return Response(
-
         generate_frames(),
-
         mimetype="multipart/x-mixed-replace; boundary=frame"
-
     )
 
 
-# ==========================================
-# Live Count API
-# ==========================================
 @app.route("/counts")
 @login_required
 def counts():
 
-    return jsonify(
+    global camera_running
 
-        get_live_counts()
+    objects = get_live_counts()
 
-    )
-
-
-# ==========================================
-# Stop Camera
-# ==========================================
-@app.route("/stop_camera")
-@login_required
-def stop_camera():
-
-    release_camera()
+    total = sum(objects.values())
 
     return jsonify({
 
         "success": True,
 
-        "message": "Camera Stopped"
+        "running": camera_running,
+
+        "status": "Running" if camera_running else "Idle",
+
+        "total": total,
+
+      "fps": 30 if camera_running else 0,
+
+        "objects": objects
 
     })
 
+
+@app.route("/stop_camera")
+@login_required
+def stop_camera():
+
+    global camera_running
+
+    release_camera()
+
+    camera_running = False
+
+    return jsonify({
+
+        "success": True,
+
+        "status": "Stopped"
+
+    })
 
 # ==========================================
 # Verify Firebase Login

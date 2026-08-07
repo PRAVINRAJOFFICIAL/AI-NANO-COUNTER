@@ -9,7 +9,7 @@
 <title>AI Nano Counter | Image Detection</title>
 
 <link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+href="{{ url_for('static', filename='css/image.css') }}">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -29,7 +29,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <div class="bg"></div>
 
-<nav>
+<nav class="navbar">
 
 <div class="logo">
 
@@ -49,11 +49,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </ul>
 
+
+
 </nav>
+
+<div class="main-container">
 
 <section class="hero">
 
-<div class="glass result-container">
+<div class="upload-card">
 
 <div style="text-align:center;">
 
@@ -80,7 +84,7 @@ method="POST"
 enctype="multipart/form-data"
 id="uploadForm">
 
-<div class="upload-box">
+<div class="drop-area">
 
 <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
 
@@ -160,7 +164,7 @@ Choose Image
 
 </div>
 
-<div class="buttons">
+<div class="button-group">
 
 <button
 type="submit"
@@ -189,6 +193,7 @@ Dashboard
 </div>
 
 </section>
+</div>
 
 <script>
 

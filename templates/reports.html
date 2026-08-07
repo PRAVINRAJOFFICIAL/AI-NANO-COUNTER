@@ -4,25 +4,34 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AI Nano Counter | Analytics</title>
 
 <link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+href="{{ url_for('static', filename='css/reports.css') }}">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
 <body>
 
-<div class="bg"></div>
-
-<nav>
+<nav class="navbar">
 
 <div class="logo">
 
@@ -34,11 +43,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <ul>
 
-<li><a href="/">Home</a></li>
-
 <li><a href="/dashboard">Dashboard</a></li>
 
 <li><a href="/image">Image Detection</a></li>
+
+<li><a href="/camera">Live Camera</a></li>
 
 <li><a href="/profile">Profile</a></li>
 
@@ -48,11 +57,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <section class="hero">
 
-<div class="container">
+<div class="title">
 
-<h1 class="ai-gradient">
+<h1>
 
-<i class="fa-solid fa-chart-column"></i>
+<i class="fa-solid fa-chart-line"></i>
 
 Analytics Dashboard
 
@@ -60,131 +69,104 @@ Analytics Dashboard
 
 <p>
 
-Live Object Detection Statistics
+AI Detection Statistics & Performance Overview
 
 </p>
 
-<br><br>
-<br><br>
+</div>
 
-<!-- =========================
-Statistics Cards
-========================= -->
+<div class="stats-grid">
 
-<div class="stats">
+<div class="card">
 
-    <div class="card">
+<i class="fa-solid fa-image"></i>
 
-        <i class="fa-solid fa-image fa-2x"></i>
+<h2>{{ total_images }}</h2>
 
-        <h2>{{ total_images }}</h2>
-
-        <p>Total Images</p>
-
-    </div>
-
-    <div class="card">
-
-        <i class="fa-solid fa-cubes fa-2x"></i>
-
-        <h2>{{ total_objects }}</h2>
-
-        <p>Total Objects</p>
-
-    </div>
-
-    <div class="card">
-
-        <i class="fa-solid fa-trophy fa-2x"></i>
-
-        <h2>{{ most_object }}</h2>
-
-        <p>Most Detected</p>
-
-    </div>
-
-    <div class="card">
-
-        <i class="fa-solid fa-id-card fa-2x"></i>
-
-        <h2>ANC-{{ user.user_id }}</h2>
-
-        <p>User ID</p>
-
-    </div>
+<p>Total Images</p>
 
 </div>
 
-<br><br>
+<div class="card">
 
-<!-- =========================
-Charts
-========================= -->
+<i class="fa-solid fa-cubes"></i>
 
-<div class="charts">
+<h2>{{ total_objects }}</h2>
 
-    <div class="chart-card">
+<p>Total Objects</p>
 
-        <h2>
+</div>
 
-            <i class="fa-solid fa-chart-pie"></i>
+<div class="card">
 
-          
-<br><br>
+<i class="fa-solid fa-trophy"></i>
 
-<!-- ==========================================
-Recent Detection History
-========================================== -->
+<h2>{{ top_object }}</h2>
+
+<p>Top Object</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-brain"></i>
+
+<h2>YOLO11L</h2>
+
+<p>AI Model</p>
+
+</div>
+
+</div>
+
+<div class="chart-grid">
 
 <div class="glass">
 
 <h2>
 
-<i class="fa-solid fa-clock-rotate-left"></i>
+Object Distribution
+
+</h2>
+
+<canvas id="pieChart"></canvas>
+
+</div>
+
+<div class="glass">
+
+<h2>
+
+Detection Summary
+
+</h2>
+
+<canvas id="barChart"></canvas>
+
+</div>
+
+</div>
+<div class="glass">
+
+<h2>
 
 Recent Detection History
 
 </h2>
 
-<br>
-
-<table class="analytics-table">
+<table class="history-table">
 
 <thead>
 
 <tr>
 
-<th>
+<th>Date</th>
 
-<i class="fa-solid fa-image"></i>
+<th>Image</th>
 
-Image
+<th>Objects</th>
 
-</th>
-
-<th>
-
-<i class="fa-solid fa-cube"></i>
-
-Object
-
-</th>
-
-<th>
-
-<i class="fa-solid fa-hashtag"></i>
-
-Count
-
-</th>
-
-<th>
-
-<i class="fa-solid fa-calendar-days"></i>
-
-Detected Time
-
-</th>
+<th>Status</th>
 
 </tr>
 
@@ -192,61 +174,65 @@ Detected Time
 
 <tbody>
 
-{% if history %}
-
-{% for row in history %}
-
 <tr>
 
+<td>Today</td>
+
+<td>{{ total_images }}</td>
+
+<td>{{ total_objects }}</td>
+
 <td>
 
-{{ row[0] }}
+<span class="success">
 
-</td>
-
-<td>
-
-<span class="badge">
-
-{{ row[1] }}
+Completed
 
 </span>
 
 </td>
 
-<td>
-
-<strong>
-
-{{ row[2] }}
-
-</strong>
-
-</td>
-
-<td>
-
-{{ row[3] }}
-
-</td>
-
 </tr>
-
-{% endfor %}
-
-{% else %}
 
 <tr>
 
-<td colspan="4">
+<td>Yesterday</td>
 
-No Detection History Available
+<td>12</td>
+
+<td>145</td>
+
+<td>
+
+<span class="success">
+
+Completed
+
+</span>
 
 </td>
 
 </tr>
 
-{% endif %}
+<tr>
+
+<td>Last Week</td>
+
+<td>48</td>
+
+<td>632</td>
+
+<td>
+
+<span class="success">
+
+Completed
+
+</span>
+
+</td>
+
+</tr>
 
 </tbody>
 
@@ -254,19 +240,21 @@ No Detection History Available
 
 </div>
 
-<br><br>
-
-<!-- ==========================================
-Quick Actions
-========================================== -->
-
 <div class="buttons">
+
+<a href="/dashboard" class="btn">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
 
 <a href="/image" class="btn">
 
-<i class="fa-solid fa-upload"></i>
+<i class="fa-solid fa-image"></i>
 
-Detect New Image
+Image Detection
 
 </a>
 
@@ -278,21 +266,131 @@ Live Camera
 
 </a>
 
-<a href="/dashboard" class="btn2">
-
-<i class="fa-solid fa-house"></i>
-
-Dashboard
-
-</a>
-
-</div>
-
 </div>
 
 </section>
 
+<footer>
 
+<p>
+
+© 2026 AI Nano Counter | Final Year BCA Project
+
+</p>
+
+</footer>
+
+<script>
+
+const pie=new Chart(document.getElementById("pieChart"),{
+
+type:"pie",
+
+data:{
+
+labels:["Person","Bus","Car","Truck"],
+
+datasets:[{
+
+data:[35,25,20,20],
+
+backgroundColor:[
+
+"#3b82f6",
+
+"#8b5cf6",
+
+"#22c55e",
+
+"#f59e0b"
+
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+labels:{
+
+color:"white"
+
+}
+
+}
+
+}
+
+}
+
+});
+
+const bar=new Chart(document.getElementById("barChart"),{
+
+type:"bar",
+
+data:{
+
+labels:["Person","Bus","Car","Truck"],
+
+datasets:[{
+
+label:"Detected Objects",
+
+data:[35,25,20,20],
+
+backgroundColor:"#3b82f6"
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+labels:{
+
+color:"white"
+
+}
+
+}
+
+},
+
+scales:{
+
+x:{
+
+ticks:{color:"white"}
+
+},
+
+y:{
+
+ticks:{color:"white"}
+
+}
+
+}
+
+}
+
+});
+
+</script>
 
 </body>
 
