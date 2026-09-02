@@ -1781,3 +1781,51 @@ img{
     background:#ffffff10;
     transform:translateY(-5px);
 }
+
+/* Home page content readability */
+.keyword-title {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.42em;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, #8fb5ff, #9c7cff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-summary,
+.cta-summary {
+    display: grid;
+    gap: 8px;
+}
+
+.keyword {
+    font-size: 1.08em;
+    font-weight: 800;
+}
+
+.keyword-ai,
+.keyword-detection {
+    color: #8fc0ff;
+}
+
+.keyword-model,
+.keyword-counting {
+    color: #b59cff;
+}
+
+.keyword-realtime,
+.keyword-vision {
+    color: #78dfd0;
+}
+
+.workflow-card .keyword {
+    font-size: 1em;
+}
+
+@media (max-width: 720px) {
+    .keyword-title {
+        font-size: 0.38em;
+    }
+}
